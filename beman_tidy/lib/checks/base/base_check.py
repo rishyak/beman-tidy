@@ -9,6 +9,7 @@ from ...utils.string import (
     red_color,
     yellow_color,
     gray_color,
+    blue_color,
     no_color,
 )
 
@@ -172,7 +173,9 @@ class BaseCheck(ABC):
                 if log_level == "warning"
                 else gray_color
                 if log_level == "skipped"
+                else blue_color
+                if log_level == "info"
                 else no_color
             )
 
-            print(f"[{color}{log_level:<15}{no_color}][{self.name:<25}]: {message}")
+            print(f"[{color}{log_level}{no_color}][{self.name}]: {message}")

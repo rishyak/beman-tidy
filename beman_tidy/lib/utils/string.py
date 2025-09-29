@@ -6,6 +6,7 @@ import re
 red_color = "\033[91m"
 green_color = "\033[92m"
 yellow_color = "\033[93m"
+blue_color = "\033[94m"
 gray_color = "\033[90m"
 no_color = "\033[0m"
 
