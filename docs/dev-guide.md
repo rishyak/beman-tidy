@@ -46,6 +46,20 @@ Check this PR example: [beman-tidy: add check - readme.library_status](https://g
 
 </details>
 
+## Build and Install from Source
+
+* The recommended workflow relies on [Astral's uv](https://docs.astral.sh/uv/)
+* To build:
+
+  ```shell
+  uv build
+  ```
+
+* To install:
+
+  ```shell
+  pipx install path/to/wheel
+  ```
 
 ## Linting
 
