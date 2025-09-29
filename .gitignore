@@ -1,0 +1,19 @@
+# python
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
+*.pyzwz
+*.delete_me
+
+# macos
+*.DS_Store
+
+# editors
+.vscode/
+.idea/
