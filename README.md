@@ -3,51 +3,12 @@
 <!--
 SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 -->
+`beman-tidy` is a tool aimed at Beman Project contributors to check (`--dry-run`)
+and apply (`--fix-inplace`) the [Beman Standard](https://github.com/bemanproject/beman/blob/main/docs/beman_standard.md)
+to their repositories.
 
-## Description
-
-`beman-tidy` is a tool used to check and apply
-[The Beman Standard](https://github.com/bemanproject/beman/blob/main/docs/beman_standard.md).
-
-Purpose: The tool is used to `check` (`--dry-run`) and `apply` (`--fix-inplace`) the Beman Standard to a repository.
 Note: `2025-06-07`: In order to make the best and quickly use of the tool in the entire organization, most of the
 checks will not support the `--fix-inplace` flag in the first iteration.
-
-## Installation
-
-- The current recommended workflow relies on [Astral's uv](https://docs.astral.sh/uv/)
-- However, we provide a [PEP 751](https://peps.python.org/pep-0751/) `pylock.toml`, so don't feel forced to use uv
-- You can use beman-tidy as a pre-commit hook or install it on your system using `pipx`
-
-```shell
-uv build
-pipx install path/to/wheel
-```
-
-<details>
-<summary>beman-tidy: Full example - build and install</summary>
-
-```shell
-$ uv build
-Building source distribution...
-Building wheel from source distribution...
-Successfully built dist/beman_tidy-0.1.0.tar.gz
-Successfully built dist/beman_tidy-0.1.0-py3-none-any.whl
-
-$ pipx install dist/beman_tidy-0.1.0-py3-none-any.whl
-Installing to existing venv 'beman-tidy'
-  installed package beman-tidy 0.1.0, installed using Python 3.13.4
-  These apps are now globally available
-    - beman-tidy
-...
-You will need to open a new terminal or re-login for the PATH changes to take effect. Alternatively, you can source your shell's config file with e.g. 'source ~/.bashrc'.
-
-$ beman-tidy --help
-usage: beman-tidy [-h] [--fix-inplace | --no-fix-inplace] [--verbose | --no-verbose] [--checks CHECKS] repo_path
-...
-```
-
-</details>
 
 ## Usage
 
