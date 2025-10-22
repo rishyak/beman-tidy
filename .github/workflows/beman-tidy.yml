@@ -14,13 +14,16 @@ on:
 
 jobs:
   run_linter:
+    name: Run Linter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - name: Sync environment
         run: |
@@ -31,13 +34,16 @@ jobs:
           uv run ruff check --diff
 
   run_tests:
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - name: Sync environment
         run: |
@@ -48,44 +54,40 @@ jobs:
           uv run pytest tests/ -v
 
   build_and_install:
+    name: Build and Install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Sync environment
-        run: |
-          uv sync
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - name: Build and install beman-tidy
         run: |
-         uv clean
-         uv build
-         python3 -m pip install dist/beman_tidy-0.1.0-py3-none-any.whl --force-reinstall
-         beman-tidy --help
+          uv build
+          uv tool install --force dist/*.whl
+          beman-tidy --help
 
   run_on_exemplar:
+    name: Run on beman.exemplar
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Sync environment
-        run: |
-          uv sync
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - name: Build and install beman-tidy
         run: |
-         uv clean
-         uv build
-         python3 -m pip install dist/beman_tidy-0.1.0-py3-none-any.whl --force-reinstall
-         beman-tidy --help
+          uv build
+          uv tool install --force dist/*.whl
+          beman-tidy --help
 
       - name: Run installed beman-tidy on exemplar repo
         run: |
